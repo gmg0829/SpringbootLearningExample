@@ -1,0 +1,15 @@
+2017-07-19 15:27:34,800 ERROR Springbootlog4jApplicationTests:19 - errorleve
+2017-07-19 15:36:22,654 ERROR LoggingFailureAnalysisReporter:42 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
