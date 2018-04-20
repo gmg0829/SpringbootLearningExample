@@ -14,7 +14,6 @@ public class FastDFSApplication {
         SpringApplication.run(FastDFSApplication.class, args);
     }
 
-    //Tomcat large file upload connection reset
     @Bean
     public TomcatEmbeddedServletContainerFactory tomcatEmbedded() {
         TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
