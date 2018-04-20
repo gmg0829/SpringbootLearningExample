@@ -1,4 +1,4 @@
-package com.jd.api.goods.service;
+package com.gmg.api.goods.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.jd.api.goods.domain.Product;

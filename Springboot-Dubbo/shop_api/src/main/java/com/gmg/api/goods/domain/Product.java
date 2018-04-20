@@ -1,4 +1,4 @@
-package com.jd.api.goods.domain;
+package com.gmg.api.goods.domain;
 
 import java.io.Serializable;
 

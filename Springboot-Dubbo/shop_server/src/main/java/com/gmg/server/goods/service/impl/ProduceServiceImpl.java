@@ -1,4 +1,4 @@
-package com.jd.server.goods.service.impl;
+package com.gmg.server.goods.service.impl;
 
 
 import com.alibaba.dubbo.config.annotation.Service;

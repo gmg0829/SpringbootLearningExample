@@ -1,4 +1,4 @@
-package com.jd.client.mgrsite.controller;
+package com.gmg.client.mgrsite.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.jd.api.goods.domain.Product;

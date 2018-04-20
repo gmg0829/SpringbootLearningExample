@@ -1,4 +1,4 @@
-package com.jd.client;
+package com.gmg.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.jd.server.goods.mapper;
+package com.gmg.server.goods.mapper;
 
 import com.jd.api.goods.domain.Product;
 import org.apache.ibatis.annotations.Mapper;

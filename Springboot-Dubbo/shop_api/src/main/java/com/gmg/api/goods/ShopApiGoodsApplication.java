@@ -1,4 +1,4 @@
-package com.jd.api.goods;
+package com.gmg.api.goods;
 
 
 public class ShopApiGoodsApplication {
