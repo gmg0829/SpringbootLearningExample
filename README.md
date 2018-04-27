@@ -18,5 +18,6 @@ Springboot-mongodb：	springboot和mongodb结合
 Springboot-mybatis-redis： springboot和redis mybatis结合   
 Springboot-mybatisAnnotation ：	springboot和mybatis注解结合  
 Springboot-springSecurity：  	springboot和sprinsecurity结合
-Springboot-webUpload:  springboot实现文件上传
+Springboot-webUpload:  springboot实现文件上传   
+Springboot-jsp: springboot和jsp集合
 
