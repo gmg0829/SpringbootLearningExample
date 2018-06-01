@@ -3,9 +3,6 @@ package com.example.demo.service;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.bean.User;
 import com.example.demo.mapper.UserMapper;
-import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +17,7 @@ public class UserService {
     UserMapper userMapper;
 
     @Autowired
-    private AmqpTemplate rabbitTemplate;
+    private Producer producer;
     public int getAll() {
         List<User> all = userMapper.selectAll();
         int count = 0;
@@ -30,7 +27,7 @@ public class UserService {
                 data.put("id",a.getId());
                 data.put("name",a.getName());
                 data.put("age",a.getAge());
-                this.rabbitTemplate.convertAndSend("topicExchange", "topic.message", data.toJSONString());
+                producer.send(new SampleMessage(1, "你好"));
                 count++;
             }
 
