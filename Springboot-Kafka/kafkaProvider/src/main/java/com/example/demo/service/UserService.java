@@ -1,11 +1,16 @@
 package com.example.demo.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.example.demo.bean.User;
+import com.example.bean.User;
 import com.example.demo.mapper.UserMapper;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -17,21 +22,25 @@ public class UserService {
     UserMapper userMapper;
 
     @Autowired
-    private Producer producer;
-    public int getAll() {
-        List<User> all = userMapper.selectAll();
-        int count = 0;
-        if (all.size() > 0) {
-            for (User a : all) {
-                JSONObject data = new JSONObject();
-                data.put("id",a.getId());
-                data.put("name",a.getName());
-                data.put("age",a.getAge());
-                producer.send(new SampleMessage(1, "你好"));
-                count++;
-            }
-
+    private AmqpTemplate rabbitTemplate;
+    public int updateUser(User user) throws Exception{
+        Integer result = userMapper.updateUser(user);
+        if (result>0){
+            byte[] bytes=getBytesFromObject(user);
+            this.rabbitTemplate.convertAndSend("exchange", "topic.messages", bytes);
+            return 1;
         }
         return 0;
+    }
+
+    //对象转化为字节码
+    public  byte[] getBytesFromObject(Serializable obj) throws Exception {
+        if (obj == null) {
+            return null;
+        }
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        ObjectOutputStream oo = new ObjectOutputStream(bo);
+        oo.writeObject(obj);
+        return bo.toByteArray();
     }
 }

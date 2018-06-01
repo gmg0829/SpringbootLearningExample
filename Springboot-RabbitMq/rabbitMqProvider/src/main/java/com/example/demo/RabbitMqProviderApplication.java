@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import com.alibaba.fastjson.JSONObject;
-import com.example.demo.bean.User;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.boot.CommandLineRunner;
