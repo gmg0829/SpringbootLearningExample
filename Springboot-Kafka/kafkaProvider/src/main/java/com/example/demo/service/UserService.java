@@ -33,14 +33,4 @@ public class UserService {
         return 0;
     }
 
-    //对象转化为字节码
-    public  byte[] getBytesFromObject(Serializable obj) throws Exception {
-        if (obj == null) {
-            return null;
-        }
-        ByteArrayOutputStream bo = new ByteArrayOutputStream();
-        ObjectOutputStream oo = new ObjectOutputStream(bo);
-        oo.writeObject(obj);
-        return bo.toByteArray();
-    }
 }
