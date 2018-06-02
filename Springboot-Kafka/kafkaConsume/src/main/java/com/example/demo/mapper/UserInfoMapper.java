@@ -1,7 +1,6 @@
 package com.example.demo.mapper;
 
-import com.example.demo.bean.User;
-import com.example.demo.bean.UserInfo;
+import com.example.bean.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

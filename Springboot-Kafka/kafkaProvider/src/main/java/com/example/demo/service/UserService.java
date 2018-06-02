@@ -2,10 +2,10 @@ package com.example.demo.service;
 
 import com.example.bean.User;
 import com.example.demo.mapper.UserMapper;
-import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageProperties;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
@@ -22,12 +22,12 @@ public class UserService {
     UserMapper userMapper;
 
     @Autowired
-    private AmqpTemplate rabbitTemplate;
+    private KafkaTemplate kafkaTemplate;
+    private Gson gson = new GsonBuilder().create();
     public int updateUser(User user) throws Exception{
         Integer result = userMapper.updateUser(user);
         if (result>0){
-            byte[] bytes=getBytesFromObject(user);
-            this.rabbitTemplate.convertAndSend("exchange", "topic.messages", bytes);
+            kafkaTemplate.send("test", gson.toJson(user));
             return 1;
         }
         return 0;
