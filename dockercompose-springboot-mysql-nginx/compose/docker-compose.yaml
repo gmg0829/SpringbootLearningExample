@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mysql:
+   container_name: v-mysql
+   image: registry.cn-hangzhou.aliyuncs.com/gmg/docker-mysql:0.0.1
+   environment:
+     MYSQL_DATABASE: tale
+     MYSQL_ROOT_PASSWORD: 123456
+     MYSQL_ROOT_HOST: '%'
+   ports:
+   - "3306:3306"
+   restart: always
+
+  app:
+    container_name: v-app
+    image: registry.cn-hangzhou.aliyuncs.com/gmg/app:0.0.1
+    restart: always
+    volumes:
+      - ~/.m2:/root/.m2
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
