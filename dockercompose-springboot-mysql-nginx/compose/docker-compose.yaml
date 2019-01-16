@@ -14,6 +14,8 @@ services:
   app:
     container_name: v-app
     image: registry.cn-hangzhou.aliyuncs.com/gmg/app:0.0.1
+    environment:
+      - JVM_OPTS=-Xmx12g -Xms12g -XX:MaxPermSize=1024m
     restart: always
     volumes:
       - ~/.m2:/root/.m2

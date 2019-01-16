@@ -1,0 +1,1 @@
+docker run --rm -e JAVA_OPTS='-Xmx1g' tomcat
