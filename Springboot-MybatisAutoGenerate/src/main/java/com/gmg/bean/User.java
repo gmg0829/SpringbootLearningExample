@@ -5,7 +5,7 @@ public class User {
 
     private String name;
 
-    private String pwd;
+    private Integer age;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getPwd() {
-        return pwd;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd == null ? null : pwd.trim();
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
