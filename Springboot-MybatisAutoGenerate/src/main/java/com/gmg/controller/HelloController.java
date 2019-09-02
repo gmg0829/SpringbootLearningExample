@@ -4,10 +4,17 @@ import com.gmg.bean.User;
 import com.gmg.bean.UserExample;
 import com.gmg.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletContext;
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author gmg
@@ -20,7 +27,11 @@ import java.util.List;
 public class HelloController {
     @Autowired
     UserMapper userMapper;
-   //https://blog.csdn.net/biandous/article/details/65630783
+
+    @Autowired
+    ServletContext servletContext;
+
+    //https://blog.csdn.net/biandous/article/details/65630783
     //https://blog.csdn.net/paincupid/article/details/50921110
     @RequestMapping("/selectUserExample")
     public List<User> selectUserExample(){
@@ -30,5 +41,13 @@ public class HelloController {
         userExample.setOrderByClause("age desc");
         List<User> list=userMapper.selectByExample(userExample);
         return list;
+    }
+
+    @RequestMapping("/getCode")
+//    @ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR,reason="server error")
+    public ResponseEntity<Map<String,Object>> getCode(){
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("name", "zhangsan");
+        return new ResponseEntity<Map<String,Object>>(map, HttpStatus.FORBIDDEN);
     }
 }
