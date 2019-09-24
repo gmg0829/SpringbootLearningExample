@@ -37,17 +37,17 @@ public class HelloController {
     public List<User> selectUserExample(){
         UserExample userExample=new UserExample();
         UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andNameEqualTo("gmg").andAgeBetween(5,12);
+        criteria.andNameEqualTo("gmg").andAgeBetween(5, 12);
         userExample.setOrderByClause("age desc");
-        List<User> list=userMapper.selectByExample(userExample);
+        List<User> list = userMapper.selectByExample(userExample);
         return list;
     }
 
     @RequestMapping("/getCode")
-//    @ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR,reason="server error")
-    public ResponseEntity<Map<String,Object>> getCode(){
-        Map<String,Object> map = new HashMap<String,Object>();
+    //    @ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR,reason="server error")
+    public ResponseEntity<Map<String, Object>> getCode() {
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("name", "zhangsan");
-        return new ResponseEntity<Map<String,Object>>(map, HttpStatus.FORBIDDEN);
+        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.FORBIDDEN);
     }
 }

@@ -22,7 +22,7 @@ public class JwtController {
     JwtOperator jwtOperator;
 
     @RequestMapping("generateToken")
-    public String generateToken(){
+    public String generateToken() {
         // 2.设置用户信息
         HashMap<String, Object> objectObjectHashMap = new HashMap<>();
         objectObjectHashMap.put("id", "1");
@@ -33,16 +33,15 @@ public class JwtController {
     }
 
     @RequestMapping("validateToken")
-    public Boolean validateToken(String someToken){
+    public Boolean validateToken(String someToken) {
         Boolean validateToken = jwtOperator.validateToken(someToken);
-        return  validateToken;
+        return validateToken;
     }
 
     @RequestMapping("getClaimsFromToken")
-    public Claims getClaimsFromToken(String someToken){
+    public Claims getClaimsFromToken(String someToken) {
         Claims claims = jwtOperator.getClaimsFromToken(someToken);
-        return  claims;
+        return claims;
     }
-
 
 }

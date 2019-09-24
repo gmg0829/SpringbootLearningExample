@@ -34,7 +34,6 @@ public class SpringUtil {
         File clsFile = ResourceUtils.getFile("classpath:conf/file1.txt");
         String httpFilePath = "file:D:/masterSpring/chapter23/src/conf/file1.txt";
 
-
         Resource res = new ClassPathResource("conf/file1.txt");
         // ① 将文件内容拷贝到一个 byte[] 中
         byte[] fileData = FileCopyUtils.copyToByteArray(res.getFile());
@@ -42,11 +41,9 @@ public class SpringUtil {
         // ② 将文件内容拷贝到一个 String 中
         String fileStr = FileCopyUtils.copyToString(new FileReader(res.getFile()));
         // ③ 将文件内容拷贝到另一个目标文件
-        FileCopyUtils.copy(res.getFile(),
-                new File(res.getFile().getParent()+ "/file2.txt"));
+        FileCopyUtils.copy(res.getFile(), new File(res.getFile().getParent() + "/file2.txt"));
         // ④ 将文件内容拷贝到一个输出流中
         OutputStream os = new ByteArrayOutputStream();
-
 
         // ① jdbc.properties 是位于类路径下的文件
         Properties props = PropertiesLoaderUtils.loadAllProperties("jdbc.properties");
@@ -54,7 +51,7 @@ public class SpringUtil {
 
         Resource res0 = new ClassPathResource("conf/file1.txt");
         // ① 指定文件资源对应的编码格式（UTF-8）
-        EncodedResource encRes = new EncodedResource(res0,"UTF-8");
+        EncodedResource encRes = new EncodedResource(res0, "UTF-8");
         // ② 这样才能正确读取文件的内容，而不会出现乱码
         String content = FileCopyUtils.copyToString(encRes.getReader());
 
@@ -64,10 +61,9 @@ public class SpringUtil {
 
         DigestUtils.md5Digest(content.getBytes());
 
-        Method s= ReflectionUtils.findMethod(Object.class,"methodName");
+        Method s = ReflectionUtils.findMethod(Object.class, "methodName");
 
-        ClassUtils.forName("int",ClassUtils.getDefaultClassLoader());
-
+        ClassUtils.forName("int", ClassUtils.getDefaultClassLoader());
 
     }
 }

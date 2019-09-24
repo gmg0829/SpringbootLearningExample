@@ -8,7 +8,6 @@ package com.gmg.bean;
  * @date 2019/8/26 18:53
  */
 
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -52,11 +51,7 @@ public class People {
 
     @Override
     public String toString() {
-        return "People{" +
-                "id=" + id +
-                ", age=" + age +
-                ", name='" + name + '\'' +
-                '}';
+        return "People{" + "id=" + id + ", age=" + age + ", name='" + name + '\'' + '}';
     }
 }
 

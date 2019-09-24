@@ -295,12 +295,14 @@ public class UserExample {
         }
     }
 
+
     public static class Criteria extends GeneratedCriteria {
 
         protected Criteria() {
             super();
         }
     }
+
 
     public static class Criterion {
         private String condition;

@@ -38,10 +38,7 @@ public class JwtOperator {
      */
     public Claims getClaimsFromToken(String token) {
         try {
-            return Jwts.parser()
-                    .setSigningKey(this.secret.getBytes())
-                    .parseClaimsJws(token)
-                    .getBody();
+            return Jwts.parser().setSigningKey(this.secret.getBytes()).parseClaimsJws(token).getBody();
         } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | IllegalArgumentException e) {
             throw new IllegalArgumentException("Token invalided.");
         }
@@ -54,8 +51,7 @@ public class JwtOperator {
      * @return 过期时间
      */
     public Date getExpirationDateFromToken(String token) {
-        return getClaimsFromToken(token)
-                .getExpiration();
+        return getClaimsFromToken(token).getExpiration();
     }
 
     /**
@@ -88,18 +84,13 @@ public class JwtOperator {
         Date createdTime = new Date();
         Date expirationTime = this.getExpirationTime();
 
-
         byte[] keyBytes = secret.getBytes();
         SecretKey key = Keys.hmacShaKeyFor(keyBytes);
 
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(createdTime)
-                .setExpiration(expirationTime)
+        return Jwts.builder().setClaims(claims).setIssuedAt(createdTime).setExpiration(expirationTime)
                 // 你也可以改用你喜欢的算法
                 // 支持的算法详见：https://github.com/jwtk/jjwt#features
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
+                .signWith(key, SignatureAlgorithm.HS256).compact();
     }
 
     /**
@@ -132,11 +123,11 @@ public class JwtOperator {
         String someToken = "";
         // 测试2: 如果能token合法且未过期，返回true
         Boolean validateToken = jwtOperator.validateToken(someToken);
-       // System.out.println(validateToken);
+        // System.out.println(validateToken);
 
         // 测试3: 获取用户信息
         Claims claims = jwtOperator.getClaimsFromToken(someToken);
-       // System.out.println(claims);
+        // System.out.println(claims);
 
         // 将我改成你生成的token的第一段（以.为边界）
         String encodedHeader = "eyJhbGciOiJIUzI1NiJ9";
